@@ -36,6 +36,12 @@ This pipeline answers that by:
 ---
 
 ## 🗂️ Project Structure
+## 🚀 How to Run the Project
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/sfazliddinov385/ETL-Project.git
+   cd ETL-Project
 
 
 ## 🔐 Environment Variables
