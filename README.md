@@ -62,4 +62,61 @@ SNOWFLAKE_DATABASE=your_database
 SNOWFLAKE_SCHEMA=your_schema
 SNOWFLAKE_WAREHOUSE=your_warehouse
 
+# ❄️ Snowflake Integration
+
+This ETL pipeline ends by loading the cleaned tech company and financial news data into **Snowflake**, a powerful cloud-based data warehouse. This enables fast querying, secure storage, and seamless scaling.
+
+---
+
+## 🚀 Key Features
+- 🔐 **Secure connection** using `snowflake.connector` and environment variables
+- ⚡ **Fast data ingestion** through Python-based batch loading
+- 🧩 **Modular structure** via `LoadData.py` for reusability and clarity
+- 🧠 **Optimized for analytics**, BI dashboards, and potential ML pipelines
+
+---
+
+## 🧱 Snowflake Table Structure
+
+| Table Name       | Description                                 |
+|------------------|---------------------------------------------|
+| `tech_companies` | Basic info like symbol, name, sector        |
+| `news_articles`  | Title, summary, source, date, sentiment     |
+
+---
+
+## 💎 Why Use Snowflake?
+
+- ☁️ Fully managed cloud data warehouse  
+- 📈 Auto-scaling performance with concurrency  
+- 🔍 Native SQL support for fast analytics  
+- 🔄 Time Travel & Fail-safe data recovery  
+- 🔐 Role-based access control for security
+
+---
+
+## 📊 Sample Snowflake SQL Queries
+
+Here are a few powerful queries to showcase your project’s data value:
+
+```sql
+-- 🔍 Most Mentioned Tech Companies
+SELECT company_name, COUNT(*) AS mentions
+FROM news_articles
+GROUP BY company_name
+ORDER BY mentions DESC
+LIMIT 10;
+
+-- 😊 Average Sentiment Per Company
+SELECT company_name, ROUND(AVG(sentiment_score), 2) AS avg_sentiment
+FROM news_articles
+GROUP BY company_name
+ORDER BY avg_sentiment DESC;
+
+-- 📅 Daily News Volume Trend
+SELECT DATE(published_at) AS date, COUNT(*) AS total_articles
+FROM news_articles
+GROUP BY DATE(published_at)
+ORDER BY date;
+
 
