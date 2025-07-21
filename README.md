@@ -62,48 +62,4 @@ SNOWFLAKE_DATABASE=your_database
 SNOWFLAKE_SCHEMA=your_schema
 SNOWFLAKE_WAREHOUSE=your_warehouse
 
-## 📊 Sample Snowflake SQL Queries
-
-```sql
--- 1. View top 10 trending tech companies by number of news mentions
-SELECT name, symbol, COUNT(*) AS total_mentions
-FROM tech_companies
-JOIN news_articles ON tech_companies.symbol = news_articles.symbol
-GROUP BY name, symbol
-ORDER BY total_mentions DESC
-LIMIT 10;
-
--- 2. Sentiment distribution across all financial news
-SELECT sentiment, COUNT(*) AS sentiment_count
-FROM news_articles
-GROUP BY sentiment
-ORDER BY sentiment_count DESC;
-
--- 3. Get latest headlines for a specific company (e.g., Apple)
-SELECT title, published_at
-FROM news_articles
-WHERE symbol = 'AAPL'
-ORDER BY published_at DESC
-LIMIT 5;
-
--- 4. Average sentiment score for each tech company
-SELECT symbol, AVG(sentiment_score) AS avg_sentiment
-FROM news_articles
-GROUP BY symbol
-ORDER BY avg_sentiment DESC;
-
--- 5. Count of articles published per day (last 7 days)
-SELECT TO_DATE(published_at) AS publish_date, COUNT(*) AS article_count
-FROM news_articles
-WHERE published_at >= DATEADD(DAY, -7, CURRENT_DATE)
-GROUP BY publish_date
-ORDER BY publish_date;
-
--- 6. Top authors contributing the most financial news
-SELECT author, COUNT(*) AS article_count
-FROM news_articles
-WHERE author IS NOT NULL AND author <> ''
-GROUP BY author
-ORDER BY article_count DESC
-LIMIT 5;
 
