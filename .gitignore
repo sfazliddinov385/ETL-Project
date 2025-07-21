@@ -1,0 +1,135 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# Configuration files with credentials
+snowflake_config.json
+config.json
+secrets.json
+credentials.json
+api_keys.json
+
+# Log files
+*.log
+logs/
+snowflake_load.log
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files (if you don't want to commit large data files)
+*.csv
+*.xlsx
+*.xls
+*.json
+data/
+datasets/
+raw_data/
+processed_data/
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.lnk
+
+# Snowflake specific
+snowflake_connection_test.log
+snowflake_*.log
+
+# API keys and tokens (additional patterns)
+*_key.txt
+*_token.txt
+*_secret.txt
+api_key.txt
+access_token.txt
+secret_key.txt
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Documentation build
+docs/_build/
+site/
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json 
