@@ -4,10 +4,12 @@ import time
 from datetime import datetime, timedelta
 from collections import defaultdict
 import json
+import os
+from dotenv import load_dotenv
 
 # API Configuration
-API_KEY = '63cXFIRWVPKMPrkfYvYb74om6JPieQ3NA2y2zxiF'
-BASE_URL = 'https://api.marketaux.com/v1'
+API_KEY = os.getenv("API_KEY")
+BASE_URL = os.getenv("BASE_URL")
 
 def fetch_tech_entities():
     """Fetch technology companies from MarketAux entity search"""
