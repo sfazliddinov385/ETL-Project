@@ -36,18 +36,21 @@ This pipeline answers that by:
 ---
 
 ## 🗂️ Project Structure
+
+```
 ETL-Project/
-│
-├── ExtractData.py # Extracts tech company & news data from MarketAux API
-├── DataCleaning.py # Cleans and transforms raw API data using pandas
-├── LoadData.py # Loads the transformed data into Snowflake warehouse
+├── ExtractData.py               # Extracts tech company & news data from MarketAux API
+├── DataCleaning.py              # Cleans and transforms raw API data using pandas
+├── LoadData.py                  # Loads the transformed data into Snowflake warehouse
 │
 ├── test_snowflake_connection.py # Script to test Snowflake connection securely
-├── .env.example # Template for required environment variables (no secrets)
-├── .gitignore # Excludes sensitive files like .env and CSVs from GitHub
-├── requirements.txt # Python dependencies needed to run the pipeline
-├── README.md # Project documentation (this file)
-└── cleaned_tech_companies.csv # Example of cleaned output (excluded in actual GitHub)
+├── .env.example                 # Template for required environment variables (no secrets)
+├── .gitignore                   # Excludes sensitive files like .env and CSVs from GitHub
+├── requirements.txt             # Python dependencies needed to run the pipeline
+├── README.md                    # Project documentation (this file)
+└── cleaned_tech_companies.csv   # Example of cleaned output (excluded in actual GitHub)
+```
+
 
 
 
