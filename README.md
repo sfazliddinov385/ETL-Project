@@ -37,6 +37,8 @@ This pipeline answers that by:
 ---
 
 ## 🗂️ Project Structure
+
+
 ## 🔐 Environment Variables
 
 Create a `.env` file in the root directory using the structure below.  
