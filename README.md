@@ -62,61 +62,58 @@ SNOWFLAKE_DATABASE=your_database
 SNOWFLAKE_SCHEMA=your_schema
 SNOWFLAKE_WAREHOUSE=your_warehouse
 
-# ❄️ Snowflake Integration
+```
+## 📊Snowflake SQL Queries
 
-This ETL pipeline ends by loading the cleaned tech company and financial news data into **Snowflake**, a powerful cloud-based data warehouse. This enables fast querying, secure storage, and seamless scaling.
-
----
-
-## 🚀 Key Features
-- 🔐 **Secure connection** using `snowflake.connector` and environment variables
-- ⚡ **Fast data ingestion** through Python-based batch loading
-- 🧩 **Modular structure** via `LoadData.py` for reusability and clarity
-- 🧠 **Optimized for analytics**, BI dashboards, and potential ML pipelines
-
----
-
-## 🧱 Snowflake Table Structure
-
-| Table Name       | Description                                 |
-|------------------|---------------------------------------------|
-| `tech_companies` | Basic info like symbol, name, sector        |
-| `news_articles`  | Title, summary, source, date, sentiment     |
-
----
-
-## 💎 Why Use Snowflake?
-
-- ☁️ Fully managed cloud data warehouse  
-- 📈 Auto-scaling performance with concurrency  
-- 🔍 Native SQL support for fast analytics  
-- 🔄 Time Travel & Fail-safe data recovery  
-- 🔐 Role-based access control for security
-
----
-
-## 📊 Sample Snowflake SQL Queries
-
-Here are a few powerful queries to showcase your project’s data value:
+These queries go beyond technical validation — they support real decision-making for stakeholders, including analysts, investors, and business strategists.
 
 ```sql
--- 🔍 Most Mentioned Tech Companies
-SELECT company_name, COUNT(*) AS mentions
+-- 🚀 Identify Fastest Growing Tech Topics
+-- Measures which companies are gaining momentum over the past 7 days
+SELECT company_name, COUNT(*) AS mentions_last_week
 FROM news_articles
+WHERE published_at >= DATEADD(day, -7, CURRENT_DATE())
 GROUP BY company_name
-ORDER BY mentions DESC
+ORDER BY mentions_last_week DESC
 LIMIT 10;
 
--- 😊 Average Sentiment Per Company
-SELECT company_name, ROUND(AVG(sentiment_score), 2) AS avg_sentiment
+-- 📉 Detect Companies with Declining Sentiment
+-- Helps stakeholders identify at-risk companies based on sentiment drop
+SELECT company_name,
+       ROUND(AVG(CASE WHEN published_at >= DATEADD(day, -7, CURRENT_DATE()) THEN sentiment_score END), 2) AS sentiment_week,
+       ROUND(AVG(CASE WHEN published_at < DATEADD(day, -7, CURRENT_DATE()) THEN sentiment_score END), 2) AS sentiment_prev
 FROM news_articles
 GROUP BY company_name
-ORDER BY avg_sentiment DESC;
+HAVING sentiment_week < sentiment_prev
+ORDER BY sentiment_week ASC;
 
--- 📅 Daily News Volume Trend
-SELECT DATE(published_at) AS date, COUNT(*) AS total_articles
+-- 🏆 Top 5 Countries with Most Positive Sentiment
+-- Reveals which regions have favorable media attention
+SELECT country, ROUND(AVG(sentiment_score), 2) AS avg_sentiment
+FROM tech_companies AS tc
+JOIN news_articles AS na
+ON tc.company_name = na.company_name
+GROUP BY country
+ORDER BY avg_sentiment DESC
+LIMIT 5;
+
+-- 🔥 Most Discussed Sectors
+-- Lets executives know which industry sectors are most newsworthy
+SELECT sector, COUNT(*) AS total_mentions
+FROM tech_companies AS tc
+JOIN news_articles AS na
+ON tc.company_name = na.company_name
+GROUP BY sector
+ORDER BY total_mentions DESC;
+
+-- ⏳ Sentiment Trend Over Time (Last 14 Days)
+-- Useful for trend analysis and building time-series visualizations
+SELECT DATE(published_at) AS date,
+       ROUND(AVG(sentiment_score), 2) AS avg_sentiment
 FROM news_articles
+WHERE published_at >= DATEADD(day, -14, CURRENT_DATE())
 GROUP BY DATE(published_at)
 ORDER BY date;
+
 
 
