@@ -37,4 +37,21 @@ This pipeline answers that by:
 ---
 
 ## 🗂️ Project Structure
+## 🔐 Environment Variables
+
+Create a `.env` file in the root directory using the structure below.  
+This file is **excluded** from GitHub using `.gitignore`.
+
+```env
+# MarketAux API Credentials
+API_KEY=your_marketaux_api_key
+BASE_URL=https://api.marketaux.com/v1
+
+# Snowflake Credentials
+SNOWFLAKE_USER=your_username
+SNOWFLAKE_PASSWORD=your_password
+SNOWFLAKE_ACCOUNT=your_account_identifier
+SNOWFLAKE_DATABASE=your_database
+SNOWFLAKE_SCHEMA=your_schema
+SNOWFLAKE_WAREHOUSE=your_warehouse
 
