@@ -32,7 +32,6 @@ This pipeline answers that by:
 - **pandas** – data transformation and analysis
 - **Snowflake** – cloud data warehouse
 - **dotenv** – securely manage API keys and credentials
-- *(Optional)* Apache Airflow – for future automation
 
 ---
 
