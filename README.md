@@ -201,9 +201,6 @@ If I had more time, I would add:
 
 This is a portfolio project demonstrating ETL best practices. In production, you'd want additional monitoring, alerting, and recovery mechanisms.
 
-## Contact
-
-Currently seeking data engineering opportunities! Feel free to reach out if you'd like to discuss this project or potential roles.
 
 **Created by:** Sarvarbek Fazliddinov  
 **GitHub:** [@sfazliddinov385](https://github.com/sfazliddinov385)
